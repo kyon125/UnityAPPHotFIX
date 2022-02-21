@@ -9,41 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a3c5d64ac83548c09dd1678b9f6f1cd, type: 3}
-  m_Name: Packed Assets
-  m_EditorClassIdentifier: 
-  m_SchemaObjects:
-  - {fileID: 5262484591590773715}
-  - {fileID: 862903211705013429}
-  m_Description: Pack assets into asset bundles.
-  m_Settings: {fileID: 0}
---- !u!114 &862903211705013429
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
-  m_Name: ContentUpdateGroupSchema
-  m_EditorClassIdentifier: 
-  m_Group: {fileID: 0}
-  m_StaticContent: 0
---- !u!114 &5262484591590773715
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: BundledAssetGroupSchema
+  m_Name: HotFixAssets_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 11400000, guid: f88a67be2a1e3f64da2de700ac202e05, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1

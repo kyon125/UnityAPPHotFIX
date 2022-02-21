@@ -78,7 +78,7 @@ public class HelloWorld : MonoBehaviour
     void OnHotFixLoaded()
     {
         //HelloWorld，第一次方法调用
-        
+        appdomain.Invoke("HotFix_Project.InstanceClass", "StaticFunTest", null, null);
 
     }
 

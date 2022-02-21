@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: HotFixAssets
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: HotFixAssets
   m_Data:
     m_SerializedData: []
-  m_GUID: bb91aed9b66119e4885d29be6a6902f8
-  m_SerializeEntries:
-  - m_GUID: cf3a516d4989e96489aedd45f17651c0
-    m_Address: Assets/Scenes/S1.unity
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
+  m_GUID: 59851778291597f418537a4c750860a8
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: fab252873fab5c34dae81d3fc0f64a43, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: e07fcc021d0943d438bd93e7956e411f, type: 2}
-    - {fileID: 11400000, guid: 07997a1bf12a19b46a3d5a94076a7a74, type: 2}
+    - {fileID: 11400000, guid: 5f6600caec1c59743a1de64d6b06ccca, type: 2}
+    - {fileID: 11400000, guid: 87a2c766490aa8f4fb66aaf7094e9490, type: 2}

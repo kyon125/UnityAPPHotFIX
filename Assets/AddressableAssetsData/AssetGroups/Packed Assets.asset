@@ -20,11 +20,18 @@ MonoBehaviour:
   - m_GUID: b46d2ba50ff16b94196dfa9f3a15f62d
     m_Address: Assets/Scenes/S2.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
   - m_GUID: f46cbacd0c438b94fb0cff5e87233e28
     m_Address: Assets/Scenes/S3.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
+  - m_GUID: 060aad7eca9e8604c835e1b24de29474
+    m_Address: Assets/AddressableRes/Hotfix/Hotfix_dll_res.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: fab252873fab5c34dae81d3fc0f64a43, type: 2}
   m_SchemaSet:

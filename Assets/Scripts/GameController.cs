@@ -57,6 +57,17 @@ public class GameController : MonoBehaviour
         StartCoroutine(WaitInformation(sceneIndex));
     }
 
+    //連線至後台，獲得當前版本號，若app版本號較舊則透過addressable執行更新
+    public IEnumerator CheckAppVersion()
+    {
+        //檢測版本號
+        UnityWebRequest www = UnityWebRequest.Get("http://localhost/test.php");
+        yield return www.SendWebRequest();
+        Debug.Log(www.downloadHandler.text.ToString());
+        //執行更新
+
+    }
+
     public void downLoadstage()
     {
         StartCoroutine(DownloadSence(sceneIndex));
@@ -81,6 +92,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator DownloadSence(int i)
     {
+       
         checkUI.SetActive(false);
         handle = Addressables.LoadSceneAsync(assetReferences[i], LoadSceneMode.Additive);
         while (!handle.IsDone)

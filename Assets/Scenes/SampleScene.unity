@@ -1197,6 +1197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 0}
+  DllRes:
+  - m_AssetGUID: 060aad7eca9e8604c835e1b24de29474
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &1970780839
 GameObject:
   m_ObjectHideFlags: 0
