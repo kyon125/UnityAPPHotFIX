@@ -9,41 +9,43 @@ using UnityEngine.AddressableAssets;
 
 public class ILRuntimeTest : MonoBehaviour
 {
+    public static ILRuntimeTest iL;
+    public static AppDomain appDomain;
     public Text UI;
+    public string Header;
     public List<AssetReference> DllRes = new List<AssetReference>();
     public AsyncOperation handle;
 
-    AppDomain appDomain;
+    
     System.IO.MemoryStream fs;
     System.IO.MemoryStream p;
     // Start is called before the first frame update
     void Start()
     {
-        print("斷點");
-        StartCoroutine(LoadHotFixAssembly());
+        iL = this;
+        appDomain = new AppDomain();
+        UI.text = Header;
     }
 
 
-    IEnumerator LoadHotFixAssembly()
+    public IEnumerator LoadHotFixAssembly( )
     {
-        appDomain = new AppDomain();
-        var v = Addressables.LoadAssetAsync<TextAsset>(DllRes[0]);
-        yield return v;
-        string path = Application.streamingAssetsPath + "/Hotfix.dll";
-        File.WriteAllBytes(path.Trim(),v.Result.bytes);
+        //重新將bytes檔反編譯成dll，並寫入資料夾
+        var b = Addressables.LoadAssetAsync<TextAsset>(DllRes[0]);
+        yield return b;
+        string path = Application.streamingAssetsPath + "/Hotfix.dll"; 
+        File.WriteAllBytes(path.Trim(), b.Result.bytes);
 
-
-
+        //讀取在資料夾裡的dll
         UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/Hotfix.dll");
-        //UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/HotFix_Project.dll");
         yield return www.SendWebRequest();
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.LogError(www.error);
         }
         byte[] dll = www.downloadHandler.data;
-        www.Dispose();
 
+        www.Dispose();
         fs = new MemoryStream(dll);
 
         try
@@ -68,6 +70,9 @@ public class ILRuntimeTest : MonoBehaviour
     void OnHotFixLoaded()
     {
         appDomain.Invoke("Hotfix.BasicClass", "HotfixGetVersion", null, null);
+        var v =  appDomain.Invoke("Hotfix.BasicClass", "HeaderChange", null, null);
+        Header = v.ToString();
+        UI.text = Header;
         //appDomain.Invoke("HotFix_Project.InstanceClass", "StaticFunTest", null, null);
     }
 

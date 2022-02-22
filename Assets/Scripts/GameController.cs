@@ -10,7 +10,10 @@ using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
 {
+    public Text text;
     public List<AssetReference> assetReferences = new List<AssetReference>();
+
+    public List<AssetReference> scriptsAsset = new List<AssetReference>();
 
     public AsyncOperationHandle handle;
 
@@ -18,6 +21,7 @@ public class GameController : MonoBehaviour
 
     public GameObject checkUI;
     public Text sizeText;
+    public float gameVersion;
 
     int sceneIndex;
     // Start is called before the first frame update
@@ -58,15 +62,28 @@ public class GameController : MonoBehaviour
     }
 
     //連線至後台，獲得當前版本號，若app版本號較舊則透過addressable執行更新
-    public IEnumerator CheckAppVersion()
+    public void CheckHotFix()
     {
-        //檢測版本號
-        UnityWebRequest www = UnityWebRequest.Get("http://localhost/test.php");
-        yield return www.SendWebRequest();
-        Debug.Log(www.downloadHandler.text.ToString());
-        //執行更新
-
+        StartCoroutine(ILRuntimeTest.iL.LoadHotFixAssembly());
+        //StartCoroutine(CheckAppVersion(gameVersion));
     }
+    //public IEnumerator CheckAppVersion(float currentversion)
+    //{
+    //    檢測版本號
+
+    //    UnityWebRequest www = UnityWebRequest.Get("http://localhost/test.php");
+    //    yield return www.SendWebRequest();
+    //    string s = www.downloadHandler.text;
+    //    float newversion = float.Parse(s);
+
+    //    StartCoroutine(ILRuntimeTest.iL.LoadHotFixAssembly());
+    //    gameVersion = newversion;
+    //    執行更新
+    //    if (currentversion < newversion)
+    //    {
+
+    //    }
+    //}
 
     public void downLoadstage()
     {
@@ -79,7 +96,8 @@ public class GameController : MonoBehaviour
         long size = downsize.Result;
         checkUI.SetActive(true);
         sizeText.text = "總共："+ "\t" + size+"kb";
-        
+        text.text = "總共：" + "\t" + size + "kb";
+
         if (handle.IsDone)
         {
             //Debug.Log(handle.Status);
@@ -98,6 +116,7 @@ public class GameController : MonoBehaviour
         while (!handle.IsDone)
         {
             yield return new WaitForSeconds(.1f);
+            text.text = handle.GetDownloadStatus().Percent * 100 + "%".ToString();
             Debug.Log(handle.GetDownloadStatus().Percent *100 +"%" .ToString());
         }
     }
