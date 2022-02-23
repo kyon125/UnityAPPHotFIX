@@ -13,7 +13,7 @@ public class ILRuntimeTest : MonoBehaviour
     public static AppDomain appDomain;
     public Text UI;
     public string Header;
-    public List<AssetReference> DllRes = new List<AssetReference>();
+    //public List<AssetReference> DllRes = new List<AssetReference>();
     public AsyncOperation handle;
 
     
@@ -31,21 +31,24 @@ public class ILRuntimeTest : MonoBehaviour
     public IEnumerator LoadHotFixAssembly( )
     {
         //重新將bytes檔反編譯成dll，並寫入資料夾
-        var b = Addressables.LoadAssetAsync<TextAsset>(DllRes[0]);
+        //Debug.Log(DllRes[0]);
+        //Addressables.ClearDependencyCacheAsync(DllRes[0]);
+        var b = Addressables.LoadAssetAsync<TextAsset>("Hotfix_dll_res");
         yield return b;
-        string path = Application.streamingAssetsPath + "/Hotfix.dll"; 
-        File.WriteAllBytes(path.Trim(), b.Result.bytes);
+        //string path = Application.persistentDataPath + "/Hotfix.dll"; 
+        //File.WriteAllBytes(path.Trim(), b.Result.bytes);
 
-        //讀取在資料夾裡的dll
-        UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/Hotfix.dll");
-        yield return www.SendWebRequest();
-        if (!string.IsNullOrEmpty(www.error))
-        {
-            Debug.LogError(www.error);
-        }
-        byte[] dll = www.downloadHandler.data;
+        ////讀取在資料夾裡的dll
+        //UnityWebRequest www = UnityWebRequest.Get(Application.persistentDataPath + "/Hotfix.dll");
+        //yield return www.SendWebRequest();
+        //if (!string.IsNullOrEmpty(www.error))
+        //{
+        //    Debug.LogError(www.error);
+        //}
+        byte[] dll = b.Result.bytes;
+        
 
-        www.Dispose();
+        //www.Dispose();
         fs = new MemoryStream(dll);
 
         try

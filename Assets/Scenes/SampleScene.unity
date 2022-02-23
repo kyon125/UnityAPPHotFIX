@@ -357,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.63, y: 331.4}
+  m_AnchoredPosition: {x: -327, y: 336}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223974228
@@ -1130,6 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee5ae417773221459e0144f06383cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  axis: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,7 +1357,6 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  scriptsAsset: []
   checkUI: {fileID: 171392062}
   sizeText: {fileID: 171392063}
   gameVersion: 0.5
@@ -1374,11 +1374,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 380557676}
   Header: "\u9019\u662F\u71B1\u66F40.5\u6E2C\u8A66"
-  DllRes:
-  - m_AssetGUID: 060aad7eca9e8604c835e1b24de29474
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
 --- !u!1 &1970780839
 GameObject:
   m_ObjectHideFlags: 0

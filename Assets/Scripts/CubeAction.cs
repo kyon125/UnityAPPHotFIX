@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class CubeAction : MonoBehaviour
 {
+
     // Start is called before the first frame update
+    public Axis axis;
     void Start()
     {
         
@@ -19,6 +21,25 @@ public class CubeAction : MonoBehaviour
 
     void cuberotate()
     {
-        this.transform.Rotate(0, 3, 0);
+        switch (axis)
+        {
+            case Axis.X:
+                this.transform.Rotate(3, 0, 0);
+                break;
+            case Axis.Y:
+                this.transform.Rotate(0, 3, 0);
+                break;
+            case Axis.Z:
+                this.transform.Rotate(0, 0, 3);
+                break;
+            default:
+                break;
+        }
     }
+}
+public enum Axis
+{
+    X,
+    Y,
+    Z
 }
