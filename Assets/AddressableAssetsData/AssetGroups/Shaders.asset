@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Packed Assets
+  m_Name: Shaders
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: Shaders
   m_Data:
     m_SerializedData: []
-  m_GUID: dafcd307d5a7e3744916b8bb9f1076db
+  m_GUID: 1d21a254965edac4fb560e1e99ee83bb
   m_SerializeEntries:
-  - m_GUID: 060aad7eca9e8604c835e1b24de29474
-    m_Address: Hotfix_dll_res
+  - m_GUID: 37a9d016da7c84d7d8c3c90eb6399f0a
+    m_Address: UnityChanShader
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: fab252873fab5c34dae81d3fc0f64a43, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 501ba802b1eaef54da97f12977051e4b, type: 2}
-    - {fileID: 11400000, guid: 4b0a7a8e1e4dde34c869f6759b7c7b15, type: 2}
+    - {fileID: 11400000, guid: 616e6c61d0308db48927cb69c2506903, type: 2}
+    - {fileID: 11400000, guid: 66f4102d5617fed47999972ca050b5f0, type: 2}

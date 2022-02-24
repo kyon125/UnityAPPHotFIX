@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     public GameObject checkUI;
     public Text sizeText;
     public float gameVersion;
-    string log;
+
     int sceneIndex;
     // Start is called before the first frame update
     private void Awake()
@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-        Addressables.ClearDependencyCacheAsync("S2");
+        Addressables.ClearDependencyCacheAsync("Scene");
         //for (int i = 0; i < assetReferences.Count; i++)
         //{
         //    Addressables.ClearDependencyCacheAsync(assetReferences[i]);
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = log;
+        
     }
     public void goStage1()
     {
@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
     void loadstage(int i)
     {
         sceneIndex = i;
-        log = "It's Stark";
+        text.text = "It's Stark";
         StartCoroutine(WaitInformation(sceneIndex));
     }
 
@@ -69,23 +69,6 @@ public class GameController : MonoBehaviour
         StartCoroutine(ILRuntimeTest.iL.LoadHotFixAssembly());
         //StartCoroutine(CheckAppVersion(gameVersion));
     }
-    //public IEnumerator CheckAppVersion(float currentversion)
-    //{
-    //    檢測版本號
-
-    //    UnityWebRequest www = UnityWebRequest.Get("http://localhost/test.php");
-    //    yield return www.SendWebRequest();
-    //    string s = www.downloadHandler.text;
-    //    float newversion = float.Parse(s);
-
-    //    StartCoroutine(ILRuntimeTest.iL.LoadHotFixAssembly());
-    //    gameVersion = newversion;
-    //    執行更新
-    //    if (currentversion < newversion)
-    //    {
-
-    //    }
-    //}
 
     public void downLoadstage()
     {
@@ -96,10 +79,10 @@ public class GameController : MonoBehaviour
         //初始化addressable
         var inihandle = Addressables.InitializeAsync();
         yield return inihandle;
-        log += " 初始化完";
+        text.text += " 初始化完";
         var handler = Addressables.CheckForCatalogUpdates(false);
         yield return handler;
-        log += " 檢查catalog完成";
+        text.text += " 檢查catalog完成";
 
         var catalogs = handler.Result;
         Debug.Log($"need update catalog:{catalogs.Count}");
@@ -125,7 +108,7 @@ public class GameController : MonoBehaviour
 
 
         //獲得下載資訊
-        var downsize = Addressables.GetDownloadSizeAsync("S2");
+        var downsize = Addressables.GetDownloadSizeAsync("Scene");
         yield return downsize;
         long size = downsize.Result;
         checkUI.SetActive(true);
@@ -149,7 +132,7 @@ public class GameController : MonoBehaviour
        
         checkUI.SetActive(false);
         
-        handle = Addressables.LoadSceneAsync("S2", LoadSceneMode.Additive);
+        handle = Addressables.LoadSceneAsync("Scene", LoadSceneMode.Single);
         while (!handle.IsDone)
         {
             yield return new WaitForSeconds(.1f);
