@@ -4,16 +4,12 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
 {
     public Text text;
-    //public List<AssetReference> assetReferences = new List<AssetReference>();
-
-    //public List<AssetReference> scriptsAsset = new List<AssetReference>();
 
     public AsyncOperationHandle handle;
 
@@ -60,7 +56,7 @@ public class GameController : MonoBehaviour
     {
         sceneIndex = i;
         text.text = "It's Stark";
-        StartCoroutine(WaitInformation(sceneIndex));
+        StartCoroutine(WaitInformation());
     }
 
     //連線至後台，獲得當前版本號，若app版本號較舊則透過addressable執行更新
@@ -74,7 +70,7 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(DownloadSence(sceneIndex));
     }
-    IEnumerator WaitInformation(int i)
+    IEnumerator WaitInformation()
     {
         //初始化addressable
         var inihandle = Addressables.InitializeAsync();
