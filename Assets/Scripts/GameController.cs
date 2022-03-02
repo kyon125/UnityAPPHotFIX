@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
@@ -139,5 +140,6 @@ public class GameController : MonoBehaviour
     public void backMainmenu()
     {
         Addressables.UnloadSceneAsync(handle);
+        Addressables.Release(handle);
     }
 }
