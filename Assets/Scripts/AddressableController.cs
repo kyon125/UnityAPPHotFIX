@@ -86,7 +86,7 @@ public class AddressableController : MonoBehaviour, AddressableInterface
     //------------------------------------------------------------------------------------------------------------------------------------------------------//
     IEnumerator DownloadSourceIE(string BundleTag)
     {
-        handle = Addressables.LoadSceneAsync(BundleTag, LoadSceneMode.Additive);
+        handle = Addressables.LoadSceneAsync(BundleTag, LoadSceneMode.Single);
         while (!handle.IsDone)
         {
             yield return new WaitForSeconds(.1f);
